@@ -2,13 +2,9 @@
 
 namespace Tyuiu.FendelNS.Sprint5.Task6.V1.Lib
 {
+
     public class DataService : ISprint5Task6V1
     {
-        public double CalculateSumOfPrimeIntegersFromFile(string filePath)
-        {
-            throw new NotImplementedException();
-        }
-
         public int LoadFromDataFile(string path)
         {
             int res = 0;

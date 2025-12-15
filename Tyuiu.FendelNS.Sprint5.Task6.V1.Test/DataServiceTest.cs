@@ -4,10 +4,10 @@ namespace Tyuiu.FendelNS.Sprint5.Task6.V1.Test
     [TestClass]
     public class DataServiceTest
     {
+
         [TestMethod]
-        public void TestMethod1()
+        public void CheckFile()
         {
-            DataService ds = new DataService();
             string path = @"C:\DataSprint5\InPutDataFileTask6V1.txt";
 
 
@@ -24,6 +24,8 @@ namespace Tyuiu.FendelNS.Sprint5.Task6.V1.Test
             string path = @"C:\DataSprint5\InPutDataFileTask6V1.txt";
             int res = ds.LoadFromDataFile(path);
             int wait = 6;
+
+            Assert.AreEqual(wait, res);
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using tyuiu.cources.programming.interfaces.Sprint5;
+﻿using System;
+using System.IO;
+using tyuiu.cources.programming.interfaces.Sprint5;
+
 namespace Tyuiu.FendelNS.Sprint5.Task7.V20.Lib
 {
     public class DataService : ISprint5Task7V20
@@ -7,26 +10,32 @@ namespace Tyuiu.FendelNS.Sprint5.Task7.V20.Lib
         {
             string tempPath = Path.GetTempPath();
             string pathSaveFile = Path.Combine(tempPath, "OutPutDataFileTask7V20.txt");
-            string strLine = "";
+
+           
+            if (File.Exists(pathSaveFile))
+                File.Delete(pathSaveFile);
+
             using (StreamReader reader = new StreamReader(path))
             {
                 string? line;
                 while ((line = reader.ReadLine()) != null)
                 {
-
+                   
                     line = line.Replace("Ссловарные сслова сс удвоенной ссогласной нн",
-                                       "Словарные слова с удвоенной согласной нн");
+                                        "Словарные слова с удвоенной согласной нн");
 
+                    
+                    string cleanedLine = "";
                     for (int i = 0; i < line.Length; i++)
                     {
-
-                        if (line[i] != 'c' && line[i] != 'C')
+                        if (line[i] != 'с' && line[i] != 'С') 
                         {
-                            strLine = strLine + line[i];
+                            cleanedLine += line[i];
                         }
                     }
-                    File.AppendAllText(pathSaveFile, strLine + Environment.NewLine);
-                    strLine = "c";
+
+                   
+                    File.AppendAllText(pathSaveFile, cleanedLine + Environment.NewLine);
                 }
             }
 

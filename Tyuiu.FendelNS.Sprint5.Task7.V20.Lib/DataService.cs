@@ -11,7 +11,7 @@ namespace Tyuiu.FendelNS.Sprint5.Task7.V20.Lib
             string tempPath = Path.GetTempPath();
             string pathSaveFile = Path.Combine(tempPath, "OutPutDataFileTask7V20.txt");
 
-           
+            
             if (File.Exists(pathSaveFile))
                 File.Delete(pathSaveFile);
 
@@ -21,21 +21,20 @@ namespace Tyuiu.FendelNS.Sprint5.Task7.V20.Lib
                 while ((line = reader.ReadLine()) != null)
                 {
                    
-                    line = line.Replace("Ссловарные сслова сс удвоенной ссогласной нн",
-                                        "Словарные слова с удвоенной согласной нн");
-
-                    
-                    string cleanedLine = "";
+                    string result = "";
                     for (int i = 0; i < line.Length; i++)
                     {
-                        if (line[i] != 'с' && line[i] != 'С') 
+                        if (i > 0 && (line[i] == 'с' || line[i] == 'С') &&
+                            (line[i - 1] == 'с' || line[i - 1] == 'С'))
                         {
-                            cleanedLine += line[i];
+                            
+                            continue;
                         }
+                        result += line[i];
                     }
 
                    
-                    File.AppendAllText(pathSaveFile, cleanedLine + Environment.NewLine);
+                    File.AppendAllText(pathSaveFile, result + Environment.NewLine);
                 }
             }
 
